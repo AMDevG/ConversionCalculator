@@ -1,25 +1,100 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcW-SN-eWC">
+                                <rect key="frame" x="452" y="116" width="46" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rlz-Bq-AUx">
+                                <rect key="frame" x="258" y="94" width="62" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FU4-SN-7GL">
+                                <rect key="frame" x="14" y="89" width="23" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ga-h6-jLH">
+                                <rect key="frame" x="45" y="91" width="199" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d7P-KN-oST">
+                                <rect key="frame" x="81" y="477" width="158" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Convert Currency"/>
+                                <connections>
+                                    <action selector="updateButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pGB-bu-bOC"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eUM-xL-kGj">
+                                <rect key="frame" x="-45" y="223" width="411" height="227"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="8bC-Xf-vdC" id="qgF-ad-8lk"/>
+                                    <outlet property="delegate" destination="8bC-Xf-vdC" id="ZPR-1P-u1m"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="SYM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTL-Fp-qOf">
+                                <rect key="frame" x="258" y="172" width="36" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hlt-U8-ISF">
+                                <rect key="frame" x="45" y="171" width="199" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hlt-U8-ISF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8pr-de-PlJ"/>
+                            <constraint firstItem="eUM-xL-kGj" firstAttribute="top" secondItem="hlt-U8-ISF" secondAttribute="bottom" constant="22" id="F4D-Md-aha"/>
+                            <constraint firstItem="hTL-Fp-qOf" firstAttribute="leading" secondItem="hlt-U8-ISF" secondAttribute="trailing" constant="14" id="Nty-Cj-WI6"/>
+                            <constraint firstItem="1ga-h6-jLH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R6i-Za-O95"/>
+                            <constraint firstItem="Rlz-Bq-AUx" firstAttribute="leading" secondItem="1ga-h6-jLH" secondAttribute="trailing" constant="14" id="bbx-yc-hby"/>
+                            <constraint firstItem="d7P-KN-oST" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="grf-mG-fNY"/>
+                            <constraint firstItem="1ga-h6-jLH" firstAttribute="leading" secondItem="FU4-SN-7GL" secondAttribute="trailing" constant="8" id="j8c-bm-19M"/>
+                            <constraint firstItem="hlt-U8-ISF" firstAttribute="top" secondItem="1ga-h6-jLH" secondAttribute="bottom" constant="50" id="xEG-1s-j4y"/>
+                            <constraint firstItem="d7P-KN-oST" firstAttribute="top" secondItem="eUM-xL-kGj" secondAttribute="bottom" constant="27" id="yuO-2u-yQv"/>
+                            <constraint firstItem="eUM-xL-kGj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zgg-7F-eC4"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="calcButton" destination="d7P-KN-oST" id="aXO-9E-hE2"/>
+                        <outlet property="inPutField" destination="1ga-h6-jLH" id="fVe-0I-5Gj"/>
+                        <outlet property="myPickerView" destination="eUM-xL-kGj" id="Sbl-aD-10C"/>
+                        <outlet property="outPutField" destination="hlt-U8-ISF" id="wFN-F0-Vwj"/>
+                        <outlet property="outPutLabel" destination="hTL-Fp-qOf" id="7C7-CV-JEu"/>
+                        <outlet property="pickerView" destination="eUM-xL-kGj" id="bIK-hG-VpI"/>
+                        <outlet property="unitLabel" destination="xcW-SN-eWC" id="gTm-Uj-vmc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="202" y="298"/>
         </scene>
     </scenes>
 </document>
