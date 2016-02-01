@@ -11,9 +11,10 @@
 @interface ViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPickerView *myPickerView;
-@property (weak, nonatomic) IBOutlet UITextField *outPutField;
-@property (weak, nonatomic) IBOutlet UILabel *outPutLabel;
-@property (weak, nonatomic) IBOutlet UITextField *inPutField;
+
+
+
+
     
 - (NSArray *) downloadExchRate: (NSString*)currency;
 

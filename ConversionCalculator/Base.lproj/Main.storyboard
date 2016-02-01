@@ -56,24 +56,24 @@
                                     <outlet property="delegate" destination="8bC-Xf-vdC" id="ZPR-1P-u1m"/>
                                 </connections>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="SYM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTL-Fp-qOf">
-                                <rect key="frame" x="258" y="172" width="36" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hlt-U8-ISF">
                                 <rect key="frame" x="45" y="171" width="199" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IeN-9n-ZI7">
+                                <rect key="frame" x="258" y="174" width="36" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hlt-U8-ISF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8pr-de-PlJ"/>
                             <constraint firstItem="eUM-xL-kGj" firstAttribute="top" secondItem="hlt-U8-ISF" secondAttribute="bottom" constant="22" id="F4D-Md-aha"/>
-                            <constraint firstItem="hTL-Fp-qOf" firstAttribute="leading" secondItem="hlt-U8-ISF" secondAttribute="trailing" constant="14" id="Nty-Cj-WI6"/>
                             <constraint firstItem="1ga-h6-jLH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R6i-Za-O95"/>
+                            <constraint firstItem="IeN-9n-ZI7" firstAttribute="leading" secondItem="hlt-U8-ISF" secondAttribute="trailing" constant="14" id="XhU-Tj-ioI"/>
                             <constraint firstItem="Rlz-Bq-AUx" firstAttribute="leading" secondItem="1ga-h6-jLH" secondAttribute="trailing" constant="14" id="bbx-yc-hby"/>
                             <constraint firstItem="d7P-KN-oST" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="grf-mG-fNY"/>
                             <constraint firstItem="1ga-h6-jLH" firstAttribute="leading" secondItem="FU4-SN-7GL" secondAttribute="trailing" constant="8" id="j8c-bm-19M"/>
@@ -84,12 +84,11 @@
                     </view>
                     <connections>
                         <outlet property="calcButton" destination="d7P-KN-oST" id="aXO-9E-hE2"/>
-                        <outlet property="inPutField" destination="1ga-h6-jLH" id="fVe-0I-5Gj"/>
-                        <outlet property="myPickerView" destination="eUM-xL-kGj" id="Sbl-aD-10C"/>
-                        <outlet property="outPutField" destination="hlt-U8-ISF" id="wFN-F0-Vwj"/>
-                        <outlet property="outPutLabel" destination="hTL-Fp-qOf" id="7C7-CV-JEu"/>
+                        <outlet property="curSym" destination="IeN-9n-ZI7" id="c8q-VK-BdN"/>
+                        <outlet property="inputBox" destination="1ga-h6-jLH" id="v1y-Fm-XqK"/>
+                        <outlet property="myPickerView" destination="eUM-xL-kGj" id="Ju6-PH-Ux2"/>
+                        <outlet property="outputBox" destination="hlt-U8-ISF" id="k7a-wJ-hY7"/>
                         <outlet property="pickerView" destination="eUM-xL-kGj" id="bIK-hG-VpI"/>
-                        <outlet property="unitLabel" destination="xcW-SN-eWC" id="gTm-Uj-vmc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

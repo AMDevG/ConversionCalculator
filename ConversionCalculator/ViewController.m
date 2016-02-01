@@ -17,10 +17,15 @@
 
 
 @property (strong) NSArray *data;
+@property NSInteger *rowValue;
 
 
-@property (weak, nonatomic) IBOutlet UITextField *inPut;
-@property (weak, nonatomic) IBOutlet UILabel *unitLabel;
+@property (strong) NSString *selectedEntry;
+
+@property (weak, nonatomic) IBOutlet UITextField *inputBox;
+@property (weak, nonatomic) IBOutlet UITextField *outputBox;
+@property (weak, nonatomic) IBOutlet UILabel *curSym;
+
 @property (weak, nonatomic) IBOutlet UIButton *calcButton;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 
@@ -32,10 +37,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [_outPutField setUserInteractionEnabled:NO];
-    
-    
-     NSArray *data = [self downloadExchRate: @"GBP"];
+    [_outputBox setUserInteractionEnabled:NO];
     
     _arrstatus = @[@"AUD",@"BGN",@"BRL",@"CAD",@"CHF",@"CNY",@"CZK",@"DKK",@"EUR",@"GBP",@"HKD",@"HRK",@"HUF",@"IDR",@"ILS",@"INR",@"JPY",@"KRW",@"MXN",@"MYR",@"NOK",@"NZD",@"PHP",@"PLN",@"RON",@"RUB",@"SEK",@"SGD",@"THB",@"TRY",@"ZAR"];
     
@@ -48,23 +50,6 @@
     [super didReceiveMemoryWarning];
 }
 
-
-- (int)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 1;
-}
-
-
-- (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    return _arrstatus.count;
-}
-
-
-- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    return _arrstatus[row];
-}
 
 
 - (NSArray*) downloadExchRate:(NSString*)currency {
@@ -116,7 +101,67 @@
 -(IBAction) updateButton:(id)sender{
     NSMutableString *buf = [NSMutableString new];
     
+    NSInteger *selection= self.rowValue;
     
+    NSString *countryCode = [_arrstatus objectAtIndex:selection];
+    
+    
+    NSLog(@"Country Selected is :  ");
+    NSLog(countryCode);
+    
+    NSDictionary *data = [self downloadExchRate: countryCode];
+    
+    NSDictionary *secData = [data objectForKey:@"rates"];
+    
+    NSString *conversionRate = [secData objectForKey:@"EUR"];
+    
+    
+    NSLog(@"%@", secData);
+    NSLog(@"Convrate");
+    NSLog(@"%@", conversionRate);
+    
+    double convDoub = [conversionRate doubleValue];
+    
+    NSString *input = (_inputBox.text);
+    
+    double doubInput = [input doubleValue];
+    
+    double convertedResult = (doubInput * convDoub);
+    
+    NSNumber *rounded = [NSNumber numberWithDouble:convertedResult];
+    
+    NSString * strResult = [NSString stringWithFormat:@"%.2f",convertedResult];
+    
+    _outputBox.text = strResult;
+    _curSym.text = countryCode;
+    
+    
+
+}
+
+- (int)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+
+- (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return _arrstatus.count;
+}
+
+
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    
+    
+    return _arrstatus[row];
+}
+
+
+- (void)pickerView: (UIPickerView *) pickerView didSelectRow: (NSInteger)row inComponent: (NSInteger) component {
+    self.rowValue = row;
+ 
     
 }
 
