@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ConversionCalculator/ViewController.m"
-            timestampString = "475978737.16439"
+            timestampString = "475989842.781434"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "currencyPair"
             landmarkType = "19">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ConversionCalculator/ViewController.m"
-            timestampString = "475988094.395623"
+            timestampString = "475989842.781434"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "-updateButton:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ConversionCalculator/ViewController.m"
-            timestampString = "475989194.281443"
+            timestampString = "475989842.781434"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "-updateButton:"
             landmarkType = "5">
          </BreakpointContent>
