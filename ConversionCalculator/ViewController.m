@@ -14,18 +14,12 @@
 }
 
 @property (strong) NSArray *currencyPair;
-
-
 @property (strong) NSArray *data;
 @property NSInteger *rowValue;
-
-
 @property (strong) NSString *selectedEntry;
-
 @property (weak, nonatomic) IBOutlet UITextField *inputBox;
 @property (weak, nonatomic) IBOutlet UITextField *outputBox;
 @property (weak, nonatomic) IBOutlet UILabel *curSym;
-
 @property (weak, nonatomic) IBOutlet UIButton *calcButton;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 
@@ -38,42 +32,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [_outputBox setUserInteractionEnabled:NO];
-    
     _arrstatus = @[@"AUD",@"BGN",@"BRL",@"CAD",@"CHF",@"CNY",@"CZK",@"DKK",@"EUR",@"GBP",@"HKD",@"HRK",@"HUF",@"IDR",@"ILS",@"INR",@"JPY",@"KRW",@"MXN",@"MYR",@"NOK",@"NZD",@"PHP",@"PLN",@"RON",@"RUB",@"SEK",@"SGD",@"THB",@"TRY",@"ZAR"];
     
     self.myPickerView.dataSource = self;
     self.myPickerView.delegate = self;
-
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-
-
 - (NSArray*) downloadExchRate:(NSString*)currency {
     
     NSString *curVal = @"USD";
-    
     NSMutableString *remoteUrl = [NSMutableString stringWithFormat:@"https://api.fixer.io/latest?base=%@",curVal];
-    
-    NSLog(remoteUrl);
-    
-    
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:remoteUrl]];
-    
     NSError *jsonError = nil;
     NSHTTPURLResponse *jsonResponse = nil;
     NSData *response;
-    
-    
+
     do {
         response = [NSURLConnection sendSynchronousRequest:request returningResponse:&jsonResponse error:&jsonError];
-        
-        
     } while ([jsonError domain] == NSURLErrorDomain);
-    
     
     if([jsonResponse statusCode] != 200) {
         NSLog(@"%ld", (long)[jsonResponse statusCode]);
@@ -88,37 +68,21 @@
                         JSONObjectWithData:response
                         options:kNilOptions
                         error:&error];
-    }
-    
+            }
     else{
         NSLog((@"Response was empty"));
-    }
+        }
     return currencyPair;
-    
 }
 
 
 -(IBAction) updateButton:(id)sender{
     NSMutableString *buf = [NSMutableString new];
-    
     NSInteger *selection= self.rowValue;
-    
     NSString *countryCode = [_arrstatus objectAtIndex:selection];
-    
-    
-    NSLog(@"Country Selected is :  ");
-    NSLog(countryCode);
-    
     NSDictionary *data = [self downloadExchRate: countryCode];
-    
     NSDictionary *secData = [data objectForKey:@"rates"];
-    
-    NSString *conversionRate = [secData objectForKey:@"EUR"];
-    
-    
-    NSLog(@"%@", secData);
-    NSLog(@"Convrate");
-    NSLog(@"%@", conversionRate);
+    NSString *conversionRate = [secData objectForKey:(@"%@",countryCode)];
     
     double convDoub = [conversionRate doubleValue];
     
@@ -134,8 +98,6 @@
     
     _outputBox.text = strResult;
     _curSym.text = countryCode;
-    
-    
 
 }
 
@@ -144,25 +106,19 @@
     return 1;
 }
 
-
 - (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     return _arrstatus.count;
 }
 
-
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    
-    
     return _arrstatus[row];
 }
 
 
 - (void)pickerView: (UIPickerView *) pickerView didSelectRow: (NSInteger)row inComponent: (NSInteger) component {
     self.rowValue = row;
- 
-    
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -172,9 +128,6 @@
         }
     }
 }
-
-
-
 
 
 
