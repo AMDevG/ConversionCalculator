@@ -35,7 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B635D0851C5EA13E0036E59F /* ConversionCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConversionCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B635D0851C5EA13E0036E59F /* Currentsy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Currentsy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B635D0891C5EA13E0036E59F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B635D08B1C5EA13E0036E59F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B635D08C1C5EA13E0036E59F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -45,10 +45,10 @@
 		B635D0941C5EA13E0036E59F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B635D0971C5EA13E0036E59F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B635D0991C5EA13E0036E59F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B635D09E1C5EA13F0036E59F /* ConversionCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConversionCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B635D09E1C5EA13F0036E59F /* Currentsy.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Currentsy.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B635D0A21C5EA13F0036E59F /* ConversionCalculatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConversionCalculatorTests.m; sourceTree = "<group>"; };
 		B635D0A41C5EA13F0036E59F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B635D0A91C5EA13F0036E59F /* ConversionCalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConversionCalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B635D0A91C5EA13F0036E59F /* Currentsy.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Currentsy.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B635D0AD1C5EA13F0036E59F /* ConversionCalculatorUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConversionCalculatorUITests.m; sourceTree = "<group>"; };
 		B635D0AF1C5EA13F0036E59F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,14 +86,15 @@
 				B635D0AC1C5EA13F0036E59F /* ConversionCalculatorUITests */,
 				B635D0861C5EA13E0036E59F /* Products */,
 			);
+			indentWidth = 5;
 			sourceTree = "<group>";
 		};
 		B635D0861C5EA13E0036E59F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B635D0851C5EA13E0036E59F /* ConversionCalculator.app */,
-				B635D09E1C5EA13F0036E59F /* ConversionCalculatorTests.xctest */,
-				B635D0A91C5EA13F0036E59F /* ConversionCalculatorUITests.xctest */,
+				B635D0851C5EA13E0036E59F /* Currentsy.app */,
+				B635D09E1C5EA13F0036E59F /* Currentsy.xctest */,
+				B635D0A91C5EA13F0036E59F /* Currentsy.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,9 +144,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B635D0841C5EA13E0036E59F /* ConversionCalculator */ = {
+		B635D0841C5EA13E0036E59F /* Currentsy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B635D0B21C5EA13F0036E59F /* Build configuration list for PBXNativeTarget "ConversionCalculator" */;
+			buildConfigurationList = B635D0B21C5EA13F0036E59F /* Build configuration list for PBXNativeTarget "Currentsy" */;
 			buildPhases = (
 				B635D0811C5EA13E0036E59F /* Sources */,
 				B635D0821C5EA13E0036E59F /* Frameworks */,
@@ -155,14 +156,14 @@
 			);
 			dependencies = (
 			);
-			name = ConversionCalculator;
+			name = Currentsy;
 			productName = ConversionCalculator;
-			productReference = B635D0851C5EA13E0036E59F /* ConversionCalculator.app */;
+			productReference = B635D0851C5EA13E0036E59F /* Currentsy.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B635D09D1C5EA13F0036E59F /* ConversionCalculatorTests */ = {
+		B635D09D1C5EA13F0036E59F /* CurrentsyTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B635D0B51C5EA13F0036E59F /* Build configuration list for PBXNativeTarget "ConversionCalculatorTests" */;
+			buildConfigurationList = B635D0B51C5EA13F0036E59F /* Build configuration list for PBXNativeTarget "CurrentsyTests" */;
 			buildPhases = (
 				B635D09A1C5EA13F0036E59F /* Sources */,
 				B635D09B1C5EA13F0036E59F /* Frameworks */,
@@ -173,14 +174,14 @@
 			dependencies = (
 				B635D0A01C5EA13F0036E59F /* PBXTargetDependency */,
 			);
-			name = ConversionCalculatorTests;
+			name = CurrentsyTests;
 			productName = ConversionCalculatorTests;
-			productReference = B635D09E1C5EA13F0036E59F /* ConversionCalculatorTests.xctest */;
+			productReference = B635D09E1C5EA13F0036E59F /* Currentsy.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B635D0A81C5EA13F0036E59F /* ConversionCalculatorUITests */ = {
+		B635D0A81C5EA13F0036E59F /* CurrentsyUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B635D0B81C5EA13F0036E59F /* Build configuration list for PBXNativeTarget "ConversionCalculatorUITests" */;
+			buildConfigurationList = B635D0B81C5EA13F0036E59F /* Build configuration list for PBXNativeTarget "CurrentsyUITests" */;
 			buildPhases = (
 				B635D0A51C5EA13F0036E59F /* Sources */,
 				B635D0A61C5EA13F0036E59F /* Frameworks */,
@@ -191,9 +192,9 @@
 			dependencies = (
 				B635D0AB1C5EA13F0036E59F /* PBXTargetDependency */,
 			);
-			name = ConversionCalculatorUITests;
+			name = CurrentsyUITests;
 			productName = ConversionCalculatorUITests;
-			productReference = B635D0A91C5EA13F0036E59F /* ConversionCalculatorUITests.xctest */;
+			productReference = B635D0A91C5EA13F0036E59F /* Currentsy.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -218,7 +219,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B635D0801C5EA13E0036E59F /* Build configuration list for PBXProject "ConversionCalculator" */;
+			buildConfigurationList = B635D0801C5EA13E0036E59F /* Build configuration list for PBXProject "Currentsy" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -231,9 +232,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B635D0841C5EA13E0036E59F /* ConversionCalculator */,
-				B635D09D1C5EA13F0036E59F /* ConversionCalculatorTests */,
-				B635D0A81C5EA13F0036E59F /* ConversionCalculatorUITests */,
+				B635D0841C5EA13E0036E59F /* Currentsy */,
+				B635D09D1C5EA13F0036E59F /* CurrentsyTests */,
+				B635D0A81C5EA13F0036E59F /* CurrentsyUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -297,12 +298,12 @@
 /* Begin PBXTargetDependency section */
 		B635D0A01C5EA13F0036E59F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B635D0841C5EA13E0036E59F /* ConversionCalculator */;
+			target = B635D0841C5EA13E0036E59F /* Currentsy */;
 			targetProxy = B635D09F1C5EA13F0036E59F /* PBXContainerItemProxy */;
 		};
 		B635D0AB1C5EA13F0036E59F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B635D0841C5EA13E0036E59F /* ConversionCalculator */;
+			target = B635D0841C5EA13E0036E59F /* Currentsy */;
 			targetProxy = B635D0AA1C5EA13F0036E59F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -413,10 +414,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: John  Berry (GFZ65FH5YW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: John  Berry (DWHH4DKS8K)";
 				INFOPLIST_FILE = ConversionCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.aMDevG.ConversionCalculator;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aMDevG.Currentsy;
+				PRODUCT_NAME = Currentsy;
 			};
 			name = Debug;
 		};
@@ -424,10 +428,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: John  Berry (GFZ65FH5YW)";
 				INFOPLIST_FILE = ConversionCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.aMDevG.ConversionCalculator;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aMDevG.Currentsy;
+				PRODUCT_NAME = Currentsy;
 			};
 			name = Release;
 		};
@@ -438,8 +444,8 @@
 				INFOPLIST_FILE = ConversionCalculatorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aMDevG.ConversionCalculatorTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConversionCalculator.app/ConversionCalculator";
+				PRODUCT_NAME = Currentsy;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Currentsy.app/Currentsy";
 			};
 			name = Debug;
 		};
@@ -450,8 +456,8 @@
 				INFOPLIST_FILE = ConversionCalculatorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aMDevG.ConversionCalculatorTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConversionCalculator.app/ConversionCalculator";
+				PRODUCT_NAME = Currentsy;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Currentsy.app/Currentsy";
 			};
 			name = Release;
 		};
@@ -461,7 +467,7 @@
 				INFOPLIST_FILE = ConversionCalculatorUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aMDevG.ConversionCalculatorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Currentsy;
 				TEST_TARGET_NAME = ConversionCalculator;
 				USES_XCTRUNNER = YES;
 			};
@@ -473,7 +479,7 @@
 				INFOPLIST_FILE = ConversionCalculatorUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aMDevG.ConversionCalculatorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Currentsy;
 				TEST_TARGET_NAME = ConversionCalculator;
 				USES_XCTRUNNER = YES;
 			};
@@ -482,7 +488,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B635D0801C5EA13E0036E59F /* Build configuration list for PBXProject "ConversionCalculator" */ = {
+		B635D0801C5EA13E0036E59F /* Build configuration list for PBXProject "Currentsy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B635D0B01C5EA13F0036E59F /* Debug */,
@@ -491,7 +497,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B635D0B21C5EA13F0036E59F /* Build configuration list for PBXNativeTarget "ConversionCalculator" */ = {
+		B635D0B21C5EA13F0036E59F /* Build configuration list for PBXNativeTarget "Currentsy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B635D0B31C5EA13F0036E59F /* Debug */,
@@ -500,7 +506,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B635D0B51C5EA13F0036E59F /* Build configuration list for PBXNativeTarget "ConversionCalculatorTests" */ = {
+		B635D0B51C5EA13F0036E59F /* Build configuration list for PBXNativeTarget "CurrentsyTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B635D0B61C5EA13F0036E59F /* Debug */,
@@ -509,7 +515,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B635D0B81C5EA13F0036E59F /* Build configuration list for PBXNativeTarget "ConversionCalculatorUITests" */ = {
+		B635D0B81C5EA13F0036E59F /* Build configuration list for PBXNativeTarget "CurrentsyUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B635D0B91C5EA13F0036E59F /* Debug */,

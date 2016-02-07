@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B635D0841C5EA13E0036E59F"
-               BuildableName = "ConversionCalculator.app"
-               BlueprintName = "ConversionCalculator"
-               ReferencedContainer = "container:ConversionCalculator.xcodeproj">
+               BuildableName = "Currentsy.app"
+               BlueprintName = "Currentsy"
+               ReferencedContainer = "container:Currentsy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B635D09D1C5EA13F0036E59F"
-               BuildableName = "ConversionCalculatorTests.xctest"
-               BlueprintName = "ConversionCalculatorTests"
-               ReferencedContainer = "container:ConversionCalculator.xcodeproj">
+               BuildableName = "Currentsy.xctest"
+               BlueprintName = "CurrentsyTests"
+               ReferencedContainer = "container:Currentsy.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B635D0A81C5EA13F0036E59F"
-               BuildableName = "ConversionCalculatorUITests.xctest"
-               BlueprintName = "ConversionCalculatorUITests"
-               ReferencedContainer = "container:ConversionCalculator.xcodeproj">
+               BuildableName = "Currentsy.xctest"
+               BlueprintName = "CurrentsyUITests"
+               ReferencedContainer = "container:Currentsy.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B635D0841C5EA13E0036E59F"
-            BuildableName = "ConversionCalculator.app"
-            BlueprintName = "ConversionCalculator"
-            ReferencedContainer = "container:ConversionCalculator.xcodeproj">
+            BuildableName = "Currentsy.app"
+            BlueprintName = "Currentsy"
+            ReferencedContainer = "container:Currentsy.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B635D0841C5EA13E0036E59F"
-            BuildableName = "ConversionCalculator.app"
-            BlueprintName = "ConversionCalculator"
-            ReferencedContainer = "container:ConversionCalculator.xcodeproj">
+            BuildableName = "Currentsy.app"
+            BlueprintName = "Currentsy"
+            ReferencedContainer = "container:Currentsy.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B635D0841C5EA13E0036E59F"
-            BuildableName = "ConversionCalculator.app"
-            BlueprintName = "ConversionCalculator"
-            ReferencedContainer = "container:ConversionCalculator.xcodeproj">
+            BuildableName = "Currentsy.app"
+            BlueprintName = "Currentsy"
+            ReferencedContainer = "container:Currentsy.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
