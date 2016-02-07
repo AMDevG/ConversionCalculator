@@ -11,8 +11,10 @@
 
 @interface ViewController (){
     NSArray *_arrstatus;
+    NSArray *_arrCountry;
+    NSDictionary *curSymbols;
 }
-
+@property (weak, nonatomic) IBOutlet UILabel *countrySymb;
 @property (strong) NSArray *currencyPair;
 @property (strong) NSArray *data;
 @property NSInteger *rowValue;
@@ -22,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *curSym;
 @property (weak, nonatomic) IBOutlet UIButton *calcButton;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activity;
 
 @end
 
@@ -32,7 +35,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [_outputBox setUserInteractionEnabled:NO];
-    _arrstatus = @[@"AUD",@"BGN",@"BRL",@"CAD",@"CHF",@"CNY",@"CZK",@"DKK",@"EUR",@"GBP",@"HKD",@"HRK",@"HUF",@"IDR",@"ILS",@"INR",@"JPY",@"KRW",@"MXN",@"MYR",@"NOK",@"NZD",@"PHP",@"PLN",@"RON",@"RUB",@"SEK",@"SGD",@"THB",@"TRY",@"ZAR"];
+    
+    _arrstatus = @[@"EUR",@"GBP",@"MXN",@"AUD",@"BGN",@"BRL",@"CAD",@"CHF",@"CNY",@"CZK",@"DKK",@"HKD",@"HRK",@"HUF",@"IDR",@"ILS",@"INR",@"JPY",@"KRW",@"MYR",@"NOK",@"NZD",@"PHP",@"PLN",@"RON",@"RUB",@"SEK",@"SGD",@"THB",@"TRY",@"ZAR"];
+    
+    _arrCountry = @[ @"Euro", @"British pound", @"Mexican peso",@"Australian dollar", @"Bulgarian lev",@"Brazilian real", @"Canadian dollar", @"Swiss franc", @"Chinese yuan", @"Czech kroner", @"Danish krone",@"Hong Kong dollar", @"Croation kuna", @"Hungarian forint",@"Indonesian rupiah", @"Israeli new sheqel", @"Indian rupee", @"Japanese yen",@"South Korean won",@"Malaysin ringgit", @"Norwegian krone", @"New Zealand dollar", @"Phillippine peso",@"Polish zloty", @"Romanian leu", @"Russian rouble", @"Swedish Krona", @"Singapore dollar", @"Thai baht", @"Turkish lira", @"South African rand" ];
+    
+    curSymbols = @{
+                                @"MXN" : @"$",
+                                @"AUD" : @"$",
+                                @"BGN" : @"лв",
+                                @"BRL" : @"R$",
+                                @"CAD" : @"$",
+                                @"CHF" : @"CHF",
+                                @"CNY" : @"¥",
+                                @"CZK" : @"Kč",
+                                @"DKK" : @"kr",
+                                @"HRK" : @"kn",
+                                @"HUF" : @"Ft",
+                                @"IDR" : @"Rp",
+                                @"MYR" : @"RM",
+                                @"PHP" : @"₱",
+                                @"RON" : @"lei",
+                                @"RUB" : @"руб",
+                                @"SEK" : @"kr",
+                                @"SGD" : @"$",
+                                @"THB" : @"฿",
+                                @"TRY" : @"₺",
+                                @"ZAR" : @"R",
+                                };
     
     self.myPickerView.dataSource = self;
     self.myPickerView.delegate = self;
@@ -75,29 +105,67 @@
     return currencyPair;
 }
 
-
 -(IBAction) updateButton:(id)sender{
-    NSMutableString *buf = [NSMutableString new];
+    
+    [_activity startAnimating];
+
     NSInteger *selection= self.rowValue;
     NSString *countryCode = [_arrstatus objectAtIndex:selection];
+    
+    NSString *countrySelect = [_arrCountry objectAtIndex:selection];
+    
     NSDictionary *data = [self downloadExchRate: countryCode];
     NSDictionary *secData = [data objectForKey:@"rates"];
     NSString *conversionRate = [secData objectForKey:(@"%@",countryCode)];
-    
+
     double convDoub = [conversionRate doubleValue];
     
     NSString *input = (_inputBox.text);
     
-    double doubInput = [input doubleValue];
+    NSString *stringWithoutSpaces = [input stringByReplacingOccurrencesOfString:@"," withString:@""];
     
+    double doubInput = [stringWithoutSpaces doubleValue];
     double convertedResult = (doubInput * convDoub);
+  
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     
-    NSNumber *rounded = [NSNumber numberWithDouble:convertedResult];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     
-    NSString * strResult = [NSString stringWithFormat:@"%.2f",convertedResult];
+    NSString *groupingSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator];
+    [formatter setGroupingSeparator:groupingSeparator];
+    [formatter setGroupingSize:3];
+    [formatter setAlwaysShowsDecimalSeparator:NO];
+    formatter.minimumFractionDigits = 3;
+    [formatter setUsesGroupingSeparator:YES];
+    [formatter setMaximumFractionDigits:2];
     
-    _outputBox.text = strResult;
+    NSString *formattedString = [formatter stringFromNumber:[NSNumber numberWithDouble:convertedResult]];
+
+    NSString *testStr = _inputBox.text;
+    
+    if ([testStr rangeOfString:@","].location == NSNotFound) {
+         NSString *formattedInput =  [formatter stringFromNumber:[NSNumber numberWithDouble:doubInput]];
+        _inputBox.text = formattedInput;
+    }
+  
     _curSym.text = countryCode;
+    _outputBox.text = formattedString;
+    
+    /////CURRENCY SYMBOL CODE ////////////////////////////////////
+
+    id countryCurrency = [curSymbols objectForKey:countryCode];
+    
+    if(countryCurrency == nil){
+           NSLog(@"nil");
+        NSLocale *lcl = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+        NSString *countryCurrency = [lcl displayNameForKey:NSLocaleCurrencySymbol value:countryCode] ;
+        _countrySymb.text = countryCurrency;
+        
+    }
+    else{
+        NSLog(@"%@",countryCurrency);
+        _countrySymb.text = countryCurrency;
+    }
 
 }
 
@@ -108,12 +176,12 @@
 
 - (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return _arrstatus.count;
+    return _arrCountry.count;
 }
 
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return _arrstatus[row];
+    return _arrCountry[row];
 }
 
 

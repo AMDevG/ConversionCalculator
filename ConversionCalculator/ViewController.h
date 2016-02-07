@@ -11,8 +11,9 @@
 @interface ViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPickerView *myPickerView;
-    
-- (NSArray *) downloadExchRate: (NSString*)currency;
+
+
+- (NSArray *) downloadExchRate;
 
 @end
 

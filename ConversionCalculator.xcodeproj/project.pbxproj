@@ -498,6 +498,7 @@
 				B635D0B41C5EA13F0036E59F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B635D0B51C5EA13F0036E59F /* Build configuration list for PBXNativeTarget "ConversionCalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +507,7 @@
 				B635D0B71C5EA13F0036E59F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B635D0B81C5EA13F0036E59F /* Build configuration list for PBXNativeTarget "ConversionCalculatorUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +516,7 @@
 				B635D0BA1C5EA13F0036E59F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
