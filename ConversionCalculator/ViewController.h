@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iAd/iAd.h>
 
-@interface ViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+
+@interface ViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, ADBannerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPickerView *myPickerView;
 
+- (NSArray*) downloadExchRate:(NSString*)currency;
 
-- (NSArray *) downloadExchRate;
+//- (void)bannerViewDidLoadAd:(ADBannerView *)banner;
 
 @end
 

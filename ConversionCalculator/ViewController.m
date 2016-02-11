@@ -8,11 +8,16 @@
 
 #import "ViewController.h"
 
+@import iAd;
+
 
 @interface ViewController (){
     NSArray *_arrstatus;
     NSArray *_arrCountry;
     NSDictionary *curSymbols;
+    BOOL _bannerIsVisible;
+    ADBannerView *_adBanner;
+     
 }
 @property (weak, nonatomic) IBOutlet UILabel *countrySymb;
 @property (strong) NSArray *currencyPair;
@@ -25,6 +30,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *calcButton;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activity;
+@property (weak, nonatomic) IBOutlet UIButton *swapButton;
+@property (weak, nonatomic) IBOutlet UILabel *baseSymb;
+
 
 @end
 
@@ -35,6 +43,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [_outputBox setUserInteractionEnabled:NO];
+     
+     UIImage *btnImage = [UIImage imageNamed:@"refresh-icon.png"];
+     [_swapButton setImage:btnImage forState:UIControlStateNormal];
+     
     
     _arrstatus = @[@"EUR",@"GBP",@"MXN",@"AUD",@"BGN",@"BRL",@"CAD",@"CHF",@"CNY",@"CZK",@"DKK",@"HKD",@"HRK",@"HUF",@"IDR",@"ILS",@"INR",@"JPY",@"KRW",@"MYR",@"NOK",@"NZD",@"PHP",@"PLN",@"RON",@"RUB",@"SEK",@"SGD",@"THB",@"TRY",@"ZAR"];
     
@@ -72,9 +84,18 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+     [super viewDidAppear:animated];
+      
+      _adBanner = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, 320, 50)];
+      _adBanner.delegate = self;
+     
+}
+
 - (NSArray*) downloadExchRate:(NSString*)currency {
     
-    NSString *curVal = @"USD";
+    NSString *curVal = currency;
     NSMutableString *remoteUrl = [NSMutableString stringWithFormat:@"https://api.fixer.io/latest?base=%@",curVal];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:remoteUrl]];
     NSError *jsonError = nil;
@@ -107,15 +128,22 @@
 
 -(IBAction) updateButton:(id)sender{
     
-    [_activity startAnimating];
+     UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+     activityView.center=self.view.center;
+     [activityView startAnimating];
+     [self.view addSubview:activityView];
+     
 
     NSInteger *selection= self.rowValue;
     NSString *countryCode = [_arrstatus objectAtIndex:selection];
-    
     NSString *countrySelect = [_arrCountry objectAtIndex:selection];
+     
+     NSString *baseCurrency = _baseSymb.text;
+     
     
-    NSDictionary *data = [self downloadExchRate: countryCode];
-    NSDictionary *secData = [data objectForKey:@"rates"];
+    NSDictionary *data = [self downloadExchRate: baseCurrency];
+   
+     NSDictionary *secData = [data objectForKey:@"rates"];
     NSString *conversionRate = [secData objectForKey:(@"%@",countryCode)];
 
     double convDoub = [conversionRate doubleValue];
@@ -166,6 +194,8 @@
         NSLog(@"%@",countryCurrency);
         _countrySymb.text = countryCurrency;
     }
+     
+    // [activityView stopAnimating];
 
 }
 
@@ -195,7 +225,59 @@
             [txt resignFirstResponder];
         }
     }
+     
 }
+
+     
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+     {
+          if (!_bannerIsVisible)
+          {
+               // If banner isn't part of view hierarchy, add it
+               if (_adBanner.superview == nil)
+               {
+                    [self.view addSubview:_adBanner];
+               }
+               
+               [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
+               
+               // Assumes the banner view is just off the bottom of the screen.
+               banner.frame = CGRectOffset(banner.frame, 0, -banner.frame.size.height);
+               
+               [UIView commitAnimations];
+               
+               _bannerIsVisible = YES;
+          }
+          
+     }
+     
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+     {
+          NSLog(@"Failed to retrieve ad");
+          if(_bannerIsVisible){
+               [UIView beginAnimations:@"animateBannerOff" context:NULL];
+               banner.frame = CGRectOffset(banner.frame, 0, banner.frame.size.height);
+               [UIView commitAnimations];
+               _bannerIsVisible = NO;
+               
+          }
+     }
+     
+
+-(IBAction) swapButton:(id)sender{
+     
+     NSString * tmpSwitch = _curSym.text;
+     
+     _curSym.text = _baseSymb.text;
+     
+     _baseSymb.text = tmpSwitch;
+     
+     
+     
+     
+}
+
+
 
 
 
