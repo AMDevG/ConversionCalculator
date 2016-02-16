@@ -91,6 +91,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7SP-yR-S3d">
+                                <rect key="frame" x="0.0" y="507" width="320" height="50"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TJz-lO-QTl" customClass="GADBannerView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -98,8 +107,10 @@
                             <constraint firstItem="SgH-ui-4Eh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="22c-Dk-Lao"/>
                             <constraint firstItem="hlt-U8-ISF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="27Z-8i-QZC"/>
                             <constraint firstItem="d7P-KN-oST" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3gm-I0-Mtp"/>
+                            <constraint firstItem="7SP-yR-S3d" firstAttribute="top" secondItem="d7P-KN-oST" secondAttribute="bottom" constant="8" id="6qu-Tb-khj"/>
                             <constraint firstItem="1ga-h6-jLH" firstAttribute="leading" secondItem="FU4-SN-7GL" secondAttribute="trailing" constant="8" id="CHW-bT-GQ9"/>
                             <constraint firstItem="1ga-h6-jLH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EaL-0z-C9U"/>
+                            <constraint firstItem="7SP-yR-S3d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HdV-qa-Eu4"/>
                             <constraint firstItem="ukt-DI-JSr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JWZ-1G-1NJ"/>
                             <constraint firstItem="X0m-0j-PTr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jvd-lP-UHw"/>
                             <constraint firstItem="hlt-U8-ISF" firstAttribute="leading" secondItem="1mH-OK-YOu" secondAttribute="trailing" constant="8" id="MAK-NZ-4Q9"/>
@@ -117,6 +128,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bannerView" destination="TJz-lO-QTl" id="16i-Eu-E5W"/>
                         <outlet property="baseCash" destination="FU4-SN-7GL" id="pQL-5M-gBb"/>
                         <outlet property="baseSymb" destination="Rlz-Bq-AUx" id="BH7-Oe-pBd"/>
                         <outlet property="calcButton" destination="d7P-KN-oST" id="aXO-9E-hE2"/>

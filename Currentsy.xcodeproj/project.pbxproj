@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B60D09151C72EF0C00FFF348 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B60D09141C72EF0C00FFF348 /* GoogleMobileAds.framework */; };
 		B635D08A1C5EA13E0036E59F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B635D0891C5EA13E0036E59F /* main.m */; };
 		B635D08D1C5EA13E0036E59F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B635D08C1C5EA13E0036E59F /* AppDelegate.m */; };
 		B635D0901C5EA13E0036E59F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B635D08F1C5EA13E0036E59F /* ViewController.m */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B60D09141C72EF0C00FFF348 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		B635D0851C5EA13E0036E59F /* Currentsy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Currentsy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B635D0891C5EA13E0036E59F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B635D08B1C5EA13E0036E59F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B60D09151C72EF0C00FFF348 /* GoogleMobileAds.framework in Frameworks */,
 				B6EC50901C6D10E900E42F3A /* iAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +87,7 @@
 		B635D07C1C5EA13E0036E59F = {
 			isa = PBXGroup;
 			children = (
+				B60D09141C72EF0C00FFF348 /* GoogleMobileAds.framework */,
 				B6EC508F1C6D10E900E42F3A /* iAd.framework */,
 				B635D0871C5EA13E0036E59F /* ConversionCalculator */,
 				B635D0A11C5EA13F0036E59F /* ConversionCalculatorTests */,
@@ -421,6 +425,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: John  Berry (GFZ65FH5YW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: John  Berry (DWHH4DKS8K)";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ConversionCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aMDevG.Currentsy;
@@ -435,6 +444,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: John  Berry (GFZ65FH5YW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: John  Berry (DWHH4DKS8K)";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ConversionCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aMDevG.Currentsy;

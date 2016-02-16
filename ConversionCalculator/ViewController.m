@@ -5,10 +5,11 @@
 //  Created by John Berry on 1/31/16.
 //  Copyright © 2016 aMDevG. All rights reserved.
 //
-
 #import "ViewController.h"
 
-@import iAd;
+//@import iAd;
+
+@import GoogleMobileAds;
 
 
 @interface ViewController (){
@@ -33,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *baseSymb;
 @property (weak, nonatomic) IBOutlet UILabel *baseCash;
 
+@property (weak, nonatomic) IBOutlet GADBannerView *bannerView;
 
 @end
 
@@ -46,6 +48,13 @@
      
      UIImage *btnImage = [UIImage imageNamed:@"refresh-icon.png"];
      [_swapButton setImage:btnImage forState:UIControlStateNormal];
+     
+     
+     
+     self.bannerView.adUnitID = @"ca-app-pub-1032870506060384/2561535157";
+    self.bannerView.rootViewController = self;
+     [self.bannerView loadRequest:[GADRequest request]];
+
      
     
      _arrstatus = @[@"USD",@"EUR",@"GBP",@"MXN",@"AUD",@"BGN",@"BRL",@"CAD",@"CHF",@"CNY",@"CZK",@"DKK",@"HKD",@"HRK",@"HUF",@"IDR",@"ILS",@"INR",@"JPY",@"KRW",@"MYR",@"NOK",@"NZD",@"PHP",@"PLN",@"RON",@"RUB",@"SEK",@"SGD",@"THB",@"TRY",@"ZAR"];
@@ -276,6 +285,11 @@
      [_inputBox resignFirstResponder];
      return YES;
 }
+- (UIViewController *)GADBannerView {
+     //return UIWindow.viewController;
+     return self;
+}
+/*
      
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
      {
@@ -305,5 +319,7 @@
                _bannerIsVisible = NO;
           }
      }
+ 
+ */
 
 @end

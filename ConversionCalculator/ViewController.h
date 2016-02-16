@@ -14,6 +14,8 @@
 
 @property (weak, nonatomic) IBOutlet UIPickerView *myPickerView;
 
+
+
 - (NSArray*) downloadExchRate:(NSString*)currency;
 
 //- (void)bannerViewDidLoadAd:(ADBannerView *)banner;
