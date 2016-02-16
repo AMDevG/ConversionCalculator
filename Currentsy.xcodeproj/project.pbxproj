@@ -16,7 +16,6 @@
 		B635D0981C5EA13E0036E59F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B635D0961C5EA13E0036E59F /* LaunchScreen.storyboard */; };
 		B635D0A31C5EA13F0036E59F /* ConversionCalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B635D0A21C5EA13F0036E59F /* ConversionCalculatorTests.m */; };
 		B635D0AE1C5EA13F0036E59F /* ConversionCalculatorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B635D0AD1C5EA13F0036E59F /* ConversionCalculatorUITests.m */; };
-		B6EC50901C6D10E900E42F3A /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EC508F1C6D10E900E42F3A /* iAd.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +53,6 @@
 		B635D0A91C5EA13F0036E59F /* Currentsy.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Currentsy.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B635D0AD1C5EA13F0036E59F /* ConversionCalculatorUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConversionCalculatorUITests.m; sourceTree = "<group>"; };
 		B635D0AF1C5EA13F0036E59F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B6EC508F1C6D10E900E42F3A /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +61,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B60D09151C72EF0C00FFF348 /* GoogleMobileAds.framework in Frameworks */,
-				B6EC50901C6D10E900E42F3A /* iAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				B60D09141C72EF0C00FFF348 /* GoogleMobileAds.framework */,
-				B6EC508F1C6D10E900E42F3A /* iAd.framework */,
 				B635D0871C5EA13E0036E59F /* ConversionCalculator */,
 				B635D0A11C5EA13F0036E59F /* ConversionCalculatorTests */,
 				B635D0AC1C5EA13F0036E59F /* ConversionCalculatorUITests */,
