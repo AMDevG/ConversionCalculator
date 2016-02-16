@@ -7,7 +7,6 @@
 //
 #import "ViewController.h"
 
-//@import iAd;
 
 @import GoogleMobileAds;
 
@@ -289,37 +288,6 @@
      //return UIWindow.viewController;
      return self;
 }
-/*
-     
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner
-     {
-          if (!_bannerIsVisible)
-          {
-               if (_adBanner.superview == nil)
-               {
-                    [self.view addSubview:_adBanner];
-               }
-               
-               [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
-               banner.frame = CGRectOffset(banner.frame, 0, -banner.frame.size.height);
-               [UIView commitAnimations];
-               _bannerIsVisible = YES;
-          }
-     }
 
-
-
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
-     {
-          NSLog(@"Failed to retrieve ad");
-          if(_bannerIsVisible){
-               [UIView beginAnimations:@"animateBannerOff" context:NULL];
-               banner.frame = CGRectOffset(banner.frame, 0, banner.frame.size.height);
-               [UIView commitAnimations];
-               _bannerIsVisible = NO;
-          }
-     }
- 
- */
 
 @end
