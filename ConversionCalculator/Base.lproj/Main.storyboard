@@ -117,6 +117,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="baseCash" destination="FU4-SN-7GL" id="pQL-5M-gBb"/>
                         <outlet property="baseSymb" destination="Rlz-Bq-AUx" id="BH7-Oe-pBd"/>
                         <outlet property="calcButton" destination="d7P-KN-oST" id="aXO-9E-hE2"/>
                         <outlet property="countrySymb" destination="1mH-OK-YOu" id="Ztz-2Y-Uog"/>

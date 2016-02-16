@@ -29,9 +29,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *curSym;
 @property (weak, nonatomic) IBOutlet UIButton *calcButton;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activity;
 @property (weak, nonatomic) IBOutlet UIButton *swapButton;
 @property (weak, nonatomic) IBOutlet UILabel *baseSymb;
+@property (weak, nonatomic) IBOutlet UILabel *baseCash;
 
 
 @end
@@ -41,19 +41,20 @@
 @synthesize currencyPair;
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    [_outputBox setUserInteractionEnabled:NO];
+     [super viewDidLoad];
+     [_outputBox setUserInteractionEnabled:NO];
      
      UIImage *btnImage = [UIImage imageNamed:@"refresh-icon.png"];
      [_swapButton setImage:btnImage forState:UIControlStateNormal];
      
     
-    _arrstatus = @[@"EUR",@"GBP",@"MXN",@"AUD",@"BGN",@"BRL",@"CAD",@"CHF",@"CNY",@"CZK",@"DKK",@"HKD",@"HRK",@"HUF",@"IDR",@"ILS",@"INR",@"JPY",@"KRW",@"MYR",@"NOK",@"NZD",@"PHP",@"PLN",@"RON",@"RUB",@"SEK",@"SGD",@"THB",@"TRY",@"ZAR"];
+     _arrstatus = @[@"USD",@"EUR",@"GBP",@"MXN",@"AUD",@"BGN",@"BRL",@"CAD",@"CHF",@"CNY",@"CZK",@"DKK",@"HKD",@"HRK",@"HUF",@"IDR",@"ILS",@"INR",@"JPY",@"KRW",@"MYR",@"NOK",@"NZD",@"PHP",@"PLN",@"RON",@"RUB",@"SEK",@"SGD",@"THB",@"TRY",@"ZAR"];
     
-    _arrCountry = @[ @"Euro", @"British pound", @"Mexican peso",@"Australian dollar", @"Bulgarian lev",@"Brazilian real", @"Canadian dollar", @"Swiss franc", @"Chinese yuan", @"Czech kroner", @"Danish krone",@"Hong Kong dollar", @"Croation kuna", @"Hungarian forint",@"Indonesian rupiah", @"Israeli new sheqel", @"Indian rupee", @"Japanese yen",@"South Korean won",@"Malaysin ringgit", @"Norwegian krone", @"New Zealand dollar", @"Phillippine peso",@"Polish zloty", @"Romanian leu", @"Russian rouble", @"Swedish Krona", @"Singapore dollar", @"Thai baht", @"Turkish lira", @"South African rand" ];
+     _arrCountry = @[@"USD", @"Euro", @"British pound", @"Mexican peso",@"Australian dollar", @"Bulgarian lev",@"Brazilian real", @"Canadian dollar", @"Swiss franc", @"Chinese yuan", @"Czech kroner", @"Danish krone",@"Hong Kong dollar", @"Croation kuna", @"Hungarian forint",@"Indonesian rupiah", @"Israeli new sheqel", @"Indian rupee", @"Japanese yen",@"South Korean won",@"Malaysin ringgit", @"Norwegian krone", @"New Zealand dollar", @"Phillippine peso",@"Polish zloty", @"Romanian leu", @"Russian rouble", @"Swedish Krona", @"Singapore dollar", @"Thai baht", @"Turkish lira", @"South African rand" ];
     
-    curSymbols = @{
+     curSymbols = @{
                                 @"MXN" : @"$",
+                                @"USD" : @"$",
                                 @"AUD" : @"$",
                                 @"BGN" : @"лв",
                                 @"BRL" : @"R$",
@@ -76,148 +77,176 @@
                                 @"ZAR" : @"R",
                                 };
     
-    self.myPickerView.dataSource = self;
-    self.myPickerView.delegate = self;
+     self.myPickerView.dataSource = self;
+     self.myPickerView.delegate = self;
+     [_inputBox setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+     [super didReceiveMemoryWarning];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
      [super viewDidAppear:animated];
-      
-      _adBanner = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, 320, 50)];
-      _adBanner.delegate = self;
-     
+     _adBanner = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, 320, 50)];
+     _adBanner.delegate = self;
 }
 
 - (NSArray*) downloadExchRate:(NSString*)currency {
     
-    NSString *curVal = currency;
-    NSMutableString *remoteUrl = [NSMutableString stringWithFormat:@"https://api.fixer.io/latest?base=%@",curVal];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:remoteUrl]];
-    NSError *jsonError = nil;
-    NSHTTPURLResponse *jsonResponse = nil;
-    NSData *response;
+     NSString *curVal = currency;
+     NSMutableString *remoteUrl = [NSMutableString stringWithFormat:@"https://api.fixer.io/latest?base=%@",curVal];
+     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:remoteUrl]];
+     NSError *jsonError = nil;
+     NSHTTPURLResponse *jsonResponse = nil;
+     NSData *response;
 
     do {
-        response = [NSURLConnection sendSynchronousRequest:request returningResponse:&jsonResponse error:&jsonError];
+         response = [NSURLConnection sendSynchronousRequest:request returningResponse:&jsonResponse error:&jsonError];
     } while ([jsonError domain] == NSURLErrorDomain);
     
     if([jsonResponse statusCode] != 200) {
-        NSLog(@"%ld", (long)[jsonResponse statusCode]);
+         NSLog(@"%ld", (long)[jsonResponse statusCode]);
     } else {
-        NSLog(@"%@", @"200 OK");
+         NSLog(@"%@", @"200 OK");
     }
-    NSError* error;
+     NSError* error;
     
-    if(response) {
-        
-        currencyPair = [NSJSONSerialization
+     if(response) {
+          currencyPair = [NSJSONSerialization
                         JSONObjectWithData:response
                         options:kNilOptions
-                        error:&error];
-            }
-    else{
-        NSLog((@"Response was empty"));
-        }
-    return currencyPair;
+                          error:&error];}
+     
+     else{NSLog((@"Response was empty"));}
+
+     return currencyPair;
 }
 
 -(IBAction) updateButton:(id)sender{
     
      UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+     
      activityView.center=self.view.center;
      [activityView startAnimating];
      [self.view addSubview:activityView];
      
-
-    NSInteger *selection= self.rowValue;
-    NSString *countryCode = [_arrstatus objectAtIndex:selection];
-    NSString *countrySelect = [_arrCountry objectAtIndex:selection];
-     
+     NSInteger *selection= self.rowValue;
+     NSString *countryCode = [_arrstatus objectAtIndex:selection];
+     NSString *countrySelect = [_arrCountry objectAtIndex:selection];
      NSString *baseCurrency = _baseSymb.text;
      
-    
-    NSDictionary *data = [self downloadExchRate: baseCurrency];
-   
+     NSDictionary *data = [self downloadExchRate: baseCurrency];
      NSDictionary *secData = [data objectForKey:@"rates"];
-    NSString *conversionRate = [secData objectForKey:(@"%@",countryCode)];
+     NSString *conversionRate = [secData objectForKey:(@"%@",countryCode)];
 
-    double convDoub = [conversionRate doubleValue];
+     double convDoub = [conversionRate doubleValue];
+     NSString *input = (_inputBox.text);
+     NSString *stringWithoutSpaces = [input stringByReplacingOccurrencesOfString:@"," withString:@""];
     
-    NSString *input = (_inputBox.text);
-    
-    NSString *stringWithoutSpaces = [input stringByReplacingOccurrencesOfString:@"," withString:@""];
-    
-    double doubInput = [stringWithoutSpaces doubleValue];
-    double convertedResult = (doubInput * convDoub);
+     double doubInput = [stringWithoutSpaces doubleValue];
+     double convertedResult = (doubInput * convDoub);
   
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     
-    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     
-    NSString *groupingSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator];
-    [formatter setGroupingSeparator:groupingSeparator];
-    [formatter setGroupingSize:3];
-    [formatter setAlwaysShowsDecimalSeparator:NO];
-    formatter.minimumFractionDigits = 3;
-    [formatter setUsesGroupingSeparator:YES];
-    [formatter setMaximumFractionDigits:2];
+     NSString *groupingSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator];
+     [formatter setGroupingSeparator:groupingSeparator];
+     [formatter setGroupingSize:3];
+     [formatter setAlwaysShowsDecimalSeparator:NO];
+     formatter.minimumFractionDigits = 3;
+     [formatter setUsesGroupingSeparator:YES];
+     [formatter setMaximumFractionDigits:2];
     
-    NSString *formattedString = [formatter stringFromNumber:[NSNumber numberWithDouble:convertedResult]];
-
-    NSString *testStr = _inputBox.text;
+     NSString *formattedString = [formatter stringFromNumber:[NSNumber numberWithDouble:convertedResult]];
+     NSString *testStr = _inputBox.text;
     
-    if ([testStr rangeOfString:@","].location == NSNotFound) {
+     if ([testStr rangeOfString:@","].location == NSNotFound) {
          NSString *formattedInput =  [formatter stringFromNumber:[NSNumber numberWithDouble:doubInput]];
         _inputBox.text = formattedInput;
-    }
+     }
   
-    _curSym.text = countryCode;
-    _outputBox.text = formattedString;
+     _curSym.text = countryCode;
+     _outputBox.text = formattedString;
     
     /////CURRENCY SYMBOL CODE ////////////////////////////////////
 
-    id countryCurrency = [curSymbols objectForKey:countryCode];
+     id countryCurrency = [curSymbols objectForKey:countryCode];
     
-    if(countryCurrency == nil){
-           NSLog(@"nil");
-        NSLocale *lcl = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-        NSString *countryCurrency = [lcl displayNameForKey:NSLocaleCurrencySymbol value:countryCode] ;
-        _countrySymb.text = countryCurrency;
-        
+     if(countryCurrency == nil){
+          NSLocale *lcl = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+          NSString *countryCurrency = [lcl displayNameForKey:NSLocaleCurrencySymbol value:countryCode] ;
+          _countrySymb.text = countryCurrency;
     }
-    else{
-        NSLog(@"%@",countryCurrency);
-        _countrySymb.text = countryCurrency;
+     else{
+          _countrySymb.text = countryCurrency;
     }
-     
-    // [activityView stopAnimating];
-
 }
+
+
+-(IBAction) swapButton:(id)sender{
+     
+     NSString *  newBaseSymbol = _countrySymb.text;
+     NSString * oldBaseSymbol = _baseCash.text;
+     NSString * newBaseCode = _curSym.text;
+     NSString *oldBaseCode = _baseSymb.text;
+     
+     NSDictionary *data = [self downloadExchRate: newBaseCode];
+     int index = [_arrstatus indexOfObject:oldBaseCode];
+     NSString *countryCode = [_arrstatus objectAtIndex:index];
+     NSDictionary *secData = [data objectForKey:@"rates"];
+     NSString *conversionRate = [secData objectForKey:(@"%@",countryCode)];
+     NSString *input = (_inputBox.text);
+     NSString *stringWithoutSpaces = [input stringByReplacingOccurrencesOfString:@"," withString:@""];
+     
+     double doubInput = [stringWithoutSpaces doubleValue];
+     double convDoub = [conversionRate doubleValue];
+     double convertedResult = (doubInput * convDoub);
+     double inputNum = [_inputBox.text doubleValue];
+     double outputNum = [_outputBox.text doubleValue];
+     
+     _curSym.text = oldBaseCode;
+     _baseSymb.text = newBaseCode;
+     _countrySymb.text = oldBaseSymbol;
+     _baseCash.text = newBaseSymbol;
+     
+     
+     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+     NSString *groupingSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator];
+     [formatter setGroupingSeparator:groupingSeparator];
+     [formatter setGroupingSize:3];
+     [formatter setAlwaysShowsDecimalSeparator:NO];
+     formatter.minimumFractionDigits = 3;
+     [formatter setUsesGroupingSeparator:YES];
+     [formatter setMaximumFractionDigits:2];
+     
+     NSString *formattedString = [formatter stringFromNumber:[NSNumber numberWithDouble:convertedResult]];
+     NSString *testStr = _inputBox.text;
+     
+     if ([testStr rangeOfString:@","].location == NSNotFound) {
+          NSString *formattedInput =  [formatter stringFromNumber:[NSNumber numberWithDouble:doubInput]];
+          _inputBox.text = formattedInput;
+     }
+     
+     _outputBox.text = formattedString;
+}
+
+
 
 - (int)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 1;
-}
+{return 1;}
 
 - (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    return _arrCountry.count;
-}
+{return _arrCountry.count;}
 
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    return _arrCountry[row];
-}
-
+{return _arrCountry[row];}
 
 - (void)pickerView: (UIPickerView *) pickerView didSelectRow: (NSInteger)row inComponent: (NSInteger) component {
-    self.rowValue = row;
-}
+    self.rowValue = row;}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     for (UIView * txt in self.view.subviews){
@@ -228,29 +257,30 @@
      
 }
 
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+     
+     [_inputBox resignFirstResponder];
+     return YES;
+}
      
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
      {
           if (!_bannerIsVisible)
           {
-               // If banner isn't part of view hierarchy, add it
                if (_adBanner.superview == nil)
                {
                     [self.view addSubview:_adBanner];
                }
                
                [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
-               
-               // Assumes the banner view is just off the bottom of the screen.
                banner.frame = CGRectOffset(banner.frame, 0, -banner.frame.size.height);
-               
                [UIView commitAnimations];
-               
                _bannerIsVisible = YES;
           }
-          
      }
-     
+
+
+
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
      {
           NSLog(@"Failed to retrieve ad");
@@ -259,26 +289,7 @@
                banner.frame = CGRectOffset(banner.frame, 0, banner.frame.size.height);
                [UIView commitAnimations];
                _bannerIsVisible = NO;
-               
           }
      }
-     
-
--(IBAction) swapButton:(id)sender{
-     
-     NSString * tmpSwitch = _curSym.text;
-     
-     _curSym.text = _baseSymb.text;
-     
-     _baseSymb.text = tmpSwitch;
-     
-     
-     
-     
-}
-
-
-
-
 
 @end
