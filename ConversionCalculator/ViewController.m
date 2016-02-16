@@ -94,7 +94,7 @@
 }
 
 - (NSArray*) downloadExchRate:(NSString*)currency {
-    
+     
      NSString *curVal = currency;
      NSMutableString *remoteUrl = [NSMutableString stringWithFormat:@"https://api.fixer.io/latest?base=%@",curVal];
      NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:remoteUrl]];
@@ -120,17 +120,19 @@
                           error:&error];}
      
      else{NSLog((@"Response was empty"));}
+     
+    
 
      return currencyPair;
 }
 
 -(IBAction) updateButton:(id)sender{
     
-     UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+     UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+     activityIndicator.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
+     [self.view addSubview: activityIndicator];
      
-     activityView.center=self.view.center;
-     [activityView startAnimating];
-     [self.view addSubview:activityView];
+     [activityIndicator startAnimating];
      
      NSInteger *selection= self.rowValue;
      NSString *countryCode = [_arrstatus objectAtIndex:selection];
@@ -183,10 +185,18 @@
      else{
           _countrySymb.text = countryCurrency;
     }
+     
+       [activityIndicator stopAnimating];
 }
 
 
 -(IBAction) swapButton:(id)sender{
+     
+     UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+     activityIndicator.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
+     [self.view addSubview: activityIndicator];
+     
+     [activityIndicator startAnimating];
      
      NSString *  newBaseSymbol = _countrySymb.text;
      NSString * oldBaseSymbol = _baseCash.text;
@@ -232,6 +242,10 @@
      }
      
      _outputBox.text = formattedString;
+     [activityIndicator stopAnimating];
+     
+     
+     
 }
 
 
