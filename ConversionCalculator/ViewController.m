@@ -44,14 +44,16 @@
 - (void)viewDidLoad {
      [super viewDidLoad];
      [_outputBox setUserInteractionEnabled:NO];
+     _inputBox.keyboardType =  UIKeyboardTypeDecimalPad;
+     
      
      UIImage *btnImage = [UIImage imageNamed:@"refresh-icon.png"];
      [_swapButton setImage:btnImage forState:UIControlStateNormal];
      
      
-     
      self.bannerView.adUnitID = @"ca-app-pub-1032870506060384/2561535157";
-    self.bannerView.rootViewController = self;
+     //self.bannerView.adUnitID = @"122d44d4b791da8ea3e6d744b7be8db2";
+     self.bannerView.rootViewController = self;
      [self.bannerView loadRequest:[GADRequest request]];
 
      
@@ -129,18 +131,11 @@
      
      else{NSLog((@"Response was empty"));}
      
-    
-
      return currencyPair;
 }
 
 -(IBAction) updateButton:(id)sender{
     
-     UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-     activityIndicator.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
-     [self.view addSubview: activityIndicator];
-     
-     [activityIndicator startAnimating];
      
      NSInteger *selection= self.rowValue;
      NSString *countryCode = [_arrstatus objectAtIndex:selection];
@@ -193,18 +188,11 @@
      else{
           _countrySymb.text = countryCurrency;
     }
-     
-       [activityIndicator stopAnimating];
 }
 
 
 -(IBAction) swapButton:(id)sender{
-     
-     UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-     activityIndicator.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
-     [self.view addSubview: activityIndicator];
-     
-     [activityIndicator startAnimating];
+   
      
      NSString *  newBaseSymbol = _countrySymb.text;
      NSString * oldBaseSymbol = _baseCash.text;
@@ -250,9 +238,6 @@
      }
      
      _outputBox.text = formattedString;
-     [activityIndicator stopAnimating];
-     
-     
      
 }
 
