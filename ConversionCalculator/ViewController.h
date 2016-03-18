@@ -17,8 +17,7 @@
 
 
 - (NSArray*) downloadExchRate:(NSString*)currency;
-
-//- (void)bannerViewDidLoadAd:(ADBannerView *)banner;
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner;
 
 @end
 

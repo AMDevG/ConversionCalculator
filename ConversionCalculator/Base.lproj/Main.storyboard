@@ -88,7 +88,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3AE-gS-6xm" customClass="GADBannerView">
-                                <rect key="frame" x="0.0" y="672" width="414" height="64"/>
+                                <rect key="frame" x="0.0" y="672" width="414" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -99,6 +99,7 @@
                             <constraint firstItem="X0m-0j-PTr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6FU-4L-Tta"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3AE-gS-6xm" secondAttribute="bottom" constant="8" id="6wq-n3-oJD"/>
                             <constraint firstItem="d7P-KN-oST" firstAttribute="top" secondItem="hlt-U8-ISF" secondAttribute="bottom" constant="35" id="7Ia-ra-NcP"/>
+                            <constraint firstItem="3AE-gS-6xm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7hG-2p-6PJ"/>
                             <constraint firstItem="SgH-ui-4Eh" firstAttribute="top" secondItem="X0m-0j-PTr" secondAttribute="bottom" constant="19" id="83Z-Wj-7Sk"/>
                             <constraint firstItem="1ga-h6-jLH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EaL-0z-C9U"/>
                             <constraint firstItem="X0m-0j-PTr" firstAttribute="top" secondItem="ukt-DI-JSr" secondAttribute="bottom" id="F0b-bb-rth"/>
@@ -117,6 +118,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="bannerView" destination="3AE-gS-6xm" id="psJ-bl-wLa"/>
                         <outlet property="baseCash" destination="FU4-SN-7GL" id="pQL-5M-gBb"/>
                         <outlet property="baseSymb" destination="Rlz-Bq-AUx" id="BH7-Oe-pBd"/>
                         <outlet property="calcButton" destination="d7P-KN-oST" id="aXO-9E-hE2"/>

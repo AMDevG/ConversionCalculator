@@ -52,7 +52,6 @@
      
      
      self.bannerView.adUnitID = @"ca-app-pub-1032870506060384/2561535157";
-     //self.bannerView.adUnitID = @"122d44d4b791da8ea3e6d744b7be8db2";
      self.bannerView.rootViewController = self;
      [self.bannerView loadRequest:[GADRequest request]];
 
@@ -275,5 +274,32 @@
     
 }
 
+/*-(void)bannerViewDidLoadAd:(ADBannerView *)banner     {
+          if (!_bannerIsVisible)
+                    {
+                             if (_adBanner.superview == nil)
+                                   {
+                                            [self.view addSubview:_adBanner];
+                                       }
+               
+                              [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
+                              banner.frame = CGRectOffset(banner.frame, 0, -banner.frame.size.height);
+                              [UIView commitAnimations];
+                              _bannerIsVisible = YES;
+                         }
+         }
+
+
+-(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+    {
+              NSLog(@"Failed to retrieve ad");
+               if(_bannerIsVisible){
+                         [UIView beginAnimations:@"animateBannerOff" context:NULL];
+                         banner.frame = CGRectOffset(banner.frame, 0, banner.frame.size.height);
+                         [UIView commitAnimations];
+                         _bannerIsVisible = NO;
+                    }
+          }
+*/
 
 @end
