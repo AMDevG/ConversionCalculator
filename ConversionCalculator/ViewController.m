@@ -265,13 +265,14 @@
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
-     
      [_inputBox resignFirstResponder];
      return YES;
 }
 - (UIViewController *)GADBannerView {
-     //return UIWindow.viewController;
+    // return UIWindow.viewController;
      return self;
+     
+    
 }
 
 
